@@ -12,20 +12,17 @@ window.addEventListener('scroll', () => {
       btn.style.backgroundColor = '#1a8917';
     }
   });
-    
-  function mRandom() {
-    let m = document.querySelectorAll('g');  // array
-    let array = [];
-    let random =0;
-    for(let i = 0; i<20; i++){
-        random = Math.round(Math.random()* 100); // numero casuale
-        array.push(random);
-    }
-    console.log(array);
-    let hiddenM = m[array[random]];
-    setInterval(()=>{
-        hiddenM.style.visibility = 'hidden';
-    }, 1000)
-}
 
-mRandom();
+  setInterval(()=>{
+    let m = document.querySelectorAll("g");
+    let random = Math.round(Math.random() * m.length);
+    let array =[]
+    if(!array.includes(random)){
+        array.push(random)
+        let mNascosta = m[random];
+        mNascosta.classList.add('random');
+        setTimeout(() => {
+            mNascosta.classList.remove('random');
+        }, 1000); 
+    }
+  }, 100);
